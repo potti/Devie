@@ -1,0 +1,81 @@
+<script>
+
+require(["dojo/dom",
+         "dojo/parser", 
+         "dojo/store/Memory", 
+         "dijit/tree/ObjectStoreModel", 
+         "dijit/Tree",
+         "demos/calendar/utils", 
+         "dijit/layout/BorderContainer", 
+         "dijit/layout/TabContainer", 
+         "dijit/layout/AccordionContainer", 
+         "dijit/layout/ContentPane", 
+         "dijit/layout/AccordionPane",
+         "demos/calendar/ScheduleMenu",
+         "dojo/domReady!"], 
+         function(dom, parser, Memory, ObjectStoreModel, Tree, utils) {
+			
+			var orderStore = new Memory({
+				data:[{ id: 'root', name:'', type:'f'},
+			            { id: 'createOrder', name:'新建订单', type:'s', parent: 'root', root:true},
+			            { id: 'queryOrder', name:'查询订单', type:'s', parent: 'root', root:true}],
+	            getChildren: function(object){
+	                return this.query({parent: object.id});
+	            }
+			});
+			var orderModel = new ObjectStoreModel({
+		         store: orderStore,
+		         query: {id:'root'}
+		     });
+			new Tree({
+				model: orderModel, 
+				showRoot: false,
+				onClick: function(item){
+					utils.menuClick(item.name, item.id);
+		         }
+			},'orderTree').startup();
+			
+			
+			var goodsStore = new Memory({
+				data:[{ id: 'root', name:'', type:'f'},
+			            { id: 'createGoods', name:'新建商品', type:'s', parent: 'root', root:true},
+			            { id: 'queryGoods', name:'查询商品', type:'s', parent: 'root', root:true}],
+	            getChildren: function(object){
+	                return this.query({parent: object.id});
+	            }
+			});
+			var goodsModel = new ObjectStoreModel({
+		         store: goodsStore,
+		         query: {id:'root'}
+		     });
+			new Tree({
+				model: goodsModel, 
+				showRoot: false,
+				onClick: function(item){
+					utils.menuClick(item.name, item.id);
+		         }
+			},'goodsTree').startup();
+});
+</script>
+
+<div data-dojo-type="dijit/layout/BorderContainer" style="width: 100%; height: 100%;">
+<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'top'">Welcome !!</div>
+<div data-dojo-type="dijit/layout/AccordionContainer" data-dojo-props="region:'leading'" style="width: 19%;">
+	<div data-dojo-type="dijit/layout/AccordionPane" title="排期表">
+		<div data-dojo-id="scheduleMenu" data-dojo-attach-point="scheduleMenu" data-dojo-type="demos/calendar/ScheduleMenu"></div>
+	</div>
+    <div data-dojo-type="dijit/layout/AccordionPane" title="订单">
+		<div id="orderTree"></div>
+    </div>
+    <div data-dojo-type="dijit/layout/AccordionPane" title="商品">
+    	<div id="goodsTree"></div>
+    </div>
+    <div data-dojo-type="dijit/layout/AccordionPane" title="报表"></div>
+</div>
+
+<div data-dojo-type="dijit/layout/TabContainer" data-dojo-props="region:'center'" id="mainTab">
+    <div data-dojo-type="dijit/layout/ContentPane" title="排期表" id="scheduleTab"><% include scheduleTab.ejs %></div>
+
+</div>
+
+</div>

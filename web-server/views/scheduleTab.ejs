@@ -1,0 +1,46 @@
+<script>
+require([
+     	"dojo/ready", 
+     	"dojo/_base/lang", 
+     	"dojo/_base/fx", 
+     	"dojo/dom", 
+     	"demos/calendar/utils", 
+     	"demos/calendar/ExtendedCalendar",
+     	"demos/calendar/ScheduleMenu"],
+
+     	function(
+     		ready, 
+     		lang, 
+     		fx,    
+     		dom, 
+     		utils, 
+     		Calendar){
+     	
+     		ready(function(){
+     			calendar.set('editable',false);
+     			calendar.columnView.set("minHours", 1);
+     			calendar.columnView.set("maxHours", 24);
+     			calendar.columnView.set("hourSize", 300);
+     			calendar.columnView.set("timeSlotDuration", 60);
+     			calendar.columnView.set("rowHeaderGridSlotDuration", 60);
+     			calendar.columnView.set("rowHeaderLabelSlotDuration", 60);
+     			
+//     			calendar.set("date", utils.getStartOfCurrentWeek(calendar));
+     			scheduleMenu.set("calendar", calendar);
+     									
+     			// Hide loading panel when application is ready
+     			fx.fadeOut({
+     				node:"loadingPanel", 
+     				onEnd: function(node){
+     					node.parentNode.removeChild(node)
+     				}}).play(500);
+     			});
+     	});
+</script>
+
+<div id="loadingPanel" style="position:absolute;z-index:10;width:100%;height:100%;background:#ffffff">
+<span style="background: #DBEB8F;padding:2px">Loading...</span>
+</div>
+
+<div data-dojo-id="calendar" data-dojo-type="demos/calendar/ExtendedCalendar"></div>	
+

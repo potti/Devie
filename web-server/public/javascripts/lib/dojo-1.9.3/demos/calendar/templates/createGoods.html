@@ -1,0 +1,35 @@
+<div>
+
+<form data-dojo-type="dijit/form/Form" data-dojo-attach-point="createGoodsForm" class="dijitCalendar">
+<p style="text-align: left;padding-left: 150px;">入库</p>
+<input type="text" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-id="id" 
+	data-dojo-attach-point="id" style="visibility:hidden"/>
+
+<div data-dojo-type="dojox/layout/TableContainer" data-dojo-attach-point="good_table" orientation="horiz" data-dojo-props="cols:2, customClass:'goodTable'" >
+	<div data-dojo-id="buydate" title="日期:" data-dojo-attach-point="buydate" data-dojo-type="dijit/form/DateTextBox" required="true" colspan="2"></div>
+	<div title="工厂:" data-dojo-type="dijit/form/FilteringSelect" data-dojo-id="factory" data-dojo-attach-point="factory" required="true" colspan="2"></div>
+	<div title="工厂编号:" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-id="factoryno" data-dojo-attach-point="factoryno" colspan="2"></div>
+	<div title="名称:"  data-dojo-type="dijit/form/ValidationTextBox" data-dojo-id="dressname" 
+		data-dojo-attach-point="dressname" required="true"  colspan="2"></div>
+	<div title="编号:"  data-dojo-type="dijit/form/ValidationTextBox" data-dojo-id="dressno" 
+		 data-dojo-attach-point="dressno" required="true" colspan="2"></div>
+	<div title="原价:"  data-dojo-type="dijit/form/NumberTextBox" name= "factoryprice" data-dojo-id="factoryprice" 
+		 constraints="{min:1,max:999999,pattern: '######.##'}" data-dojo-attach-point="factoryprice" colspan="2"></div>
+	<div title="进价:"  data-dojo-type="dijit/form/NumberTextBox" name= "price" data-dojo-id="price" 
+		 constraints="{min:1,max:99999,pattern: '#####.##'}" required="true" data-dojo-attach-point="price" colspan="2"></div>
+    <div title="数量:"  data-dojo-type="dijit/form/NumberTextBox" name= "dressnum" data-dojo-id="dressnum" 
+		 constraints="{min:1,max:99999,pattern: '#####'}" required="true" data-dojo-attach-point="dressnum" value="1" colspan="2"></div>
+</div>
+
+<div style="text-align:left;padding-left: 200px;">
+	<input type="button" data-dojo-type="dijit/form/Button" data-dojo-id="clearbtn" 
+		 data-dojo-attach-point="clearbtn" style="text-align:right" showLabels="true"/>
+	<input type="button" data-dojo-type="dijit/form/Button" data-dojo-id="submitbtn" 
+		data-dojo-attach-point="submitbtn" style="text-align:right" showLabels="false"/>
+</div>
+
+</form>
+
+
+</div>
+

@@ -1,0 +1,31 @@
+<div>
+<form data-dojo-type="dijit/form/Form" data-dojo-attach-point="queryGoodsForm" class="dijitCalendar" style="hight:30%">
+<table>
+<tr>
+    <td style="width:70%"><label>工厂:</label><input data-dojo-type="dijit/form/FilteringSelect" data-dojo-id="qg_f" data-dojo-attach-point="qg_f"/></td>
+    <td><label>名称:</label><input type="text" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-id="qg_dname" 
+		data-dojo-attach-point="qg_dname" /></td>
+</tr>
+<tr>
+	<td style="width:70%"><label>编号:</label><input type="text" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-id="qg_dno" 
+		data-dojo-attach-point="qg_dno" /></td>
+	<td></td>
+</tr>
+<tr>
+	<td></td>
+	<td style="text-align:right">
+		<input type="button" label="查询" data-dojo-type="dijit/form/Button" data-dojo-id="qgbtn" 
+			data-dojo-attach-point="qgbtn" />
+		<input type="button" label="重新输入" data-dojo-type="dijit/form/Button" data-dojo-id="qcbtn" 
+			data-dojo-attach-point="qcbtn" />
+	</td>
+</tr>
+</table>
+</form>
+
+<table data-dojo-type="dojox/grid/EnhancedGrid" data-dojo-id="qggrid" 
+	data-dojo-attach-point="qggrid" style="height:100px;width:100px;padding:0px;"  
+		data-dojo-props="plugins:{pagination: {defaultPageSize:10, sizeSwitch : true,description: true,pageStepper: true,gotoButton: true,maxPageStep: 5,pageSizes: ['25', '50', '100', 'All'],position : 'bottom'}}">
+</table>
+</div>
+		    

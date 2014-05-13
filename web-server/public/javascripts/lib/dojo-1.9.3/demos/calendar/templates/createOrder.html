@@ -1,0 +1,57 @@
+<div>
+<form data-dojo-type="dijit/form/Form" data-dojo-attach-point="createOrderForm" data-dojo-id="createOrderForm" class="dijitCalendar" style="height:100%">
+<input type="text" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-id="id" 
+	data-dojo-attach-point="id" style="visibility:hidden"/>
+
+<div data-dojo-type="dojox/layout/TableContainer" data-dojo-attach-point="order_table" orientation="horiz" data-dojo-props="cols:4, customClass:'orderTable'" >
+
+<div data-dojo-id="ctime" title="订单日期:" data-dojo-attach-point="ctime" data-dojo-type="dijit/form/DateTextBox" required="true" colspan="2"></div>
+<div title="订单编号:"  data-dojo-type="dijit/form/ValidationTextBox" data-dojo-id="order_no" 
+	data-dojo-attach-point="order_no" required="true"  colspan="2"></div>
+<div data-dojo-id="wedding_date" title="婚期(开始):" data-dojo-attach-point="wedding_date" data-dojo-type="dijit/form/DateTextBox" required="true" colspan="2"></div>
+<div data-dojo-id="wedding_date_end" title="婚期(结束):" data-dojo-attach-point="wedding_date_end" data-dojo-type="dijit/form/DateTextBox" required="true" colspan="2"></div>
+<div title="姓名:"  data-dojo-type="dijit/form/ValidationTextBox" data-dojo-id="custom_name" 
+	data-dojo-attach-point="custom_name" required="true" colspan="2"></div>
+<div title="电话:"  data-dojo-type="dijit/form/NumberTextBox" data-dojo-id="tel" maxlength=11
+	 constraints="{pattern: '###########'}" data-dojo-attach-point="tel" colspan="2"></div>
+<div title="渠道:" data-dojo-type="dijit/form/FilteringSelect" data-dojo-id="come_from" data-dojo-attach-point="come_from" required="true" colspan="2"></div>	 
+<div title="朋友:"  data-dojo-type="dijit/form/ValidationTextBox" data-dojo-id="friend" 
+	data-dojo-attach-point="friend" colspan="2"></div>
+
+<div title="礼服:" data-dojo-type="demo.FilteringSelect" data-dojo-id="order_details_dress" data-dojo-attach-point="order_details_dress" required="false"></div>
+<div title="数量:"  data-dojo-type="dijit/form/NumberTextBox" data-dojo-id="order_details_num" 
+	 constraints="{maxlength:3,pattern: '###'}" data-dojo-attach-point="order_details_num"></div>
+<div title="备注:"  data-dojo-type="dijit/form/ValidationTextBox" data-dojo-id="order_details_remark" 
+	 data-dojo-attach-point="order_details_remark"></div>
+<div data-dojo-type="dijit/form/Button" data-dojo-id="order_details_adddress" iconClass='addBtnIcon'
+	 data-dojo-attach-point="order_details_adddress" showLabels="false"></div>
+	 
+<table data-dojo-type="dojox/grid/EnhancedGrid" data-dojo-id="order_details" 
+	data-dojo-attach-point="order_details" style="height:100px;width:90%;padding:0px;" colspan="4">
+</table>	 
+	
+<div title="原价:"  data-dojo-type="dijit/form/NumberTextBox" data-dojo-id="order_price" 
+	 constraints="{min:1,max:999999,pattern: '######.##'}" data-dojo-attach-point="order_price" colspan="2"></div>
+<div title="折扣:"  data-dojo-type="dijit/form/ValidationTextBox" data-dojo-id="discount" 
+		data-dojo-attach-point="discount" colspan="2"></div>
+<div title="总价:"  data-dojo-type="dijit/form/NumberTextBox" data-dojo-id="order_final_price" 
+	 constraints="{min:1,max:999999,pattern: '######.##'}" data-dojo-attach-point="order_final_price" colspan="2"></div>		
+<div title="定金:"  data-dojo-type="dijit/form/NumberTextBox" data-dojo-id="guarantee" 
+	 constraints="{min:1,max:999999,pattern: '######.##'}" data-dojo-attach-point="guarantee" colspan="2"></div>
+<div title="余款:"  data-dojo-type="dijit/form/NumberTextBox" data-dojo-id="restmoney" 
+	 constraints="{min:1,max:999999,pattern: '######.##'}" data-dojo-attach-point="restmoney" colspan="2"></div>
+<div title="押金:"  data-dojo-type="dijit/form/NumberTextBox" data-dojo-id="security" 
+	 constraints="{min:1,max:999999,pattern: '######.##'}" data-dojo-attach-point="security" colspan="2"></div>
+<textarea title="备注:" data-dojo-id="remark" data-dojo-attach-point="remark" 
+		data-dojo-type="dijit/form/SimpleTextarea" rows="4" cols="20" style="width:90%;resize:none" colspan="4"></textarea>
+</div>
+
+<div style="text-align:left;padding-left: 300px;">
+<input type="button" data-dojo-type="dijit/form/Button" data-dojo-id="clearbtn" 
+	 data-dojo-attach-point="clearbtn" style="text-align:right" label="重新输入" showLabels="true"/>
+<input type="button" data-dojo-type="dijit/form/Button" data-dojo-id="submitbtn" 
+	data-dojo-attach-point="submitbtn" style="text-align:right" label="&nbsp;&nbsp;确&nbsp;&nbsp;&nbsp;&nbsp;定&nbsp;&nbsp;" showLabels="true"/>
+</div>
+
+</form>
+</div>

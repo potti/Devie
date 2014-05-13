@@ -1,0 +1,66 @@
+<!-- start LoginView -->
+<div data-dojo-id="dj_loginView" data-dojo-type="dijit/Dialog" id="loginView">       
+<table class="dijitDialogPaneContentArea">
+<tr>
+    <td><label for="name">用户名:</label></td>
+    <td><input data-dojo-type="dijit/form/TextBox" name="name" id="name" data-dojo-props="placeHolder: 'Enter user name here.'"></td>
+</tr>
+<tr>
+    <td><label for="address">密码:</label></td>
+    <td><input type="password" data-dojo-type="dijit/form/TextBox" name="password" id="password" data-dojo-props="placeHolder: 'Enter password here.'"></td>
+</tr>
+</table>
+
+<div class="dijitDialogPaneActionBar">
+<button type="submit" id="loginSubmitBtn">登陆</button>
+<button type="button" id="loginCancelBtn">取消</button>
+</div>
+
+</div>
+<script>
+require(["dojo/dom", "dijit/form/Button", "dijit/Dialog", "dijit/form/FilteringSelect", "dojo/domReady!"], function(dom, Button, Dialog) {
+	var loginView = new Dialog({
+        title: "用户登陆",
+        style: "width: 500px,height:400px"
+    }, "loginView");
+	  
+    var loginBtn = new Button({
+        onClick: function(){
+        	var userName = dom.byId('name').value;
+        	var passWord = dom.byId('password').value; 
+        	// query entry of connection
+        	var route = 'connector.entryHandler.entry';
+        	pomelo.init({
+        		host: window.location.hostname,
+        		port: 3010,
+        		log: true
+        	}, function() {
+        		pomelo.request(route, {
+        			name: userName,
+        			ps : passWord
+        		}, function(data) {
+        			if(data.code != 200) {
+        				alert("服务器无法连接");
+        				pomelo.disconnect();
+        				return;
+        			}
+        			loginView.hide();
+        			scheduleMenu.load();
+        			calendar.load();
+        		});
+        	});
+    	}
+    }, "loginSubmitBtn");
+    loginBtn.startup();
+    
+    var loginCancelBtn = new Button({
+        onClick: function(){
+        	loginView.hide();
+    	}
+    }, "loginCancelBtn");
+    loginCancelBtn.startup();
+    
+    loginView.show();
+});
+</script>
+<!-- end LoginView -->

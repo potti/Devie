@@ -1,0 +1,31 @@
+<div>
+<form data-dojo-type="dijit/form/Form" data-dojo-attach-point="queryOrderForm" class="dijitCalendar" style="hight:30%">
+<table>
+<tr>
+    <td style="width:70%"><label>婚期:</label><div data-dojo-id="qo_wd" type="text" data-dojo-attach-point="qo_wd" 
+    	data-dojo-type="dijit/form/DateTextBox"></div></td>
+    <td><label>礼服:</label><input data-dojo-type="demo.FilteringSelect" data-dojo-id="qo_dress" data-dojo-attach-point="qo_dress" /></td>
+</tr>
+<tr>
+	<td style="width:70%"><label>姓名:</label><input type="text" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-id="qo_name" 
+		data-dojo-attach-point="qo_name" /></td>
+	<td><label>电话:</label><input type="text" data-dojo-type="dijit/form/ValidationTextBox" data-dojo-id="qo_tel" 
+		data-dojo-attach-point="qo_tel" /></td>
+</tr>
+<tr>
+	<td></td>
+	<td style="text-align:right">
+		<input type="button" label="查询" data-dojo-type="dijit/form/Button" data-dojo-id="qo_btn" 
+			data-dojo-attach-point="qo_btn" />
+		<input type="button" label="重新输入" data-dojo-type="dijit/form/Button" data-dojo-id="qoc_btn" 
+			data-dojo-attach-point="qoc_btn" />
+	</td>
+</tr>
+</table>
+</form>
+
+<table data-dojo-type="dojox/grid/EnhancedGrid" data-dojo-id="qotgrid" autoWidth="true" autoHeight="false" style="height:600px;padding:0px;" data-dojo-attach-point="qotgrid" 
+	data-dojo-props="plugins:{pagination: {defaultPageSize:10, sizeSwitch : true,description: true,pageStepper: true,gotoButton: true,maxPageStep: 5,pageSizes: ['25', '50', '100', 'All'],position : 'bottom'}}">
+</table>
+</div>
+		    
