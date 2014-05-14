@@ -13,7 +13,12 @@ module.exports = function(app) {
 
 
 Handler.prototype.create = function(msg, session, next) {
-	
+	if(session.get('power') < 5){
+		next(null, {
+			code : 500
+		});
+		return;
+	}
 	goodsDao.createGoods(msg, function(err, goods){
 		if(err) {
 			next(err, {code: 500});
@@ -28,7 +33,12 @@ Handler.prototype.create = function(msg, session, next) {
 };
 
 Handler.prototype.update = function(msg, session, next) {
-	
+	if(session.get('power') < 5){
+		next(null, {
+			code : 500
+		});
+		return;
+	}
 	goodsDao.updateGoods(msg, function(err, goods){
 		if(err) {
 			next(err, {code: 500});
@@ -43,7 +53,12 @@ Handler.prototype.update = function(msg, session, next) {
 };
 
 Handler.prototype.del = function(msg, session, next) {
-	
+	if(session.get('power') < 5){
+		next(null, {
+			code : 500
+		});
+		return;
+	}
 	goodsDao.del(msg, function(err, success){
 		if(err || !success) {
 			next(err, {code: 500});
@@ -71,7 +86,6 @@ Handler.prototype.factorys = function(msg, session, next) {
 };
 
 Handler.prototype.query = function(msg, session, next) {
-	
 	goodsDao.getGoods(msg, function(err, res){
 		if(err) {
 			next(err, {code: 500});
@@ -79,13 +93,19 @@ Handler.prototype.query = function(msg, session, next) {
 		}
 		next(null, {
 			code : 200,
-			data : res
+			data : res,
+			power : session.get('power')
 		});
 	});
 };
 
 Handler.prototype.getGoodById = function(msg, session, next) {
-	
+	if(session.get('power') < 5){
+		next(null, {
+			code : 500
+		});
+		return;
+	}
 	goodsDao.getGoodById(msg, function(err, res){
 		if(err) {
 			next(err, {code: 500});

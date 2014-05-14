@@ -43,6 +43,8 @@ function(
 		id:null,
 		
 		utils:null,
+		
+		power:null,
 
 		postCreate : function() {
 
@@ -108,12 +110,24 @@ function(
 				'name' : '原价',
 				'field' : 'factoryprice',
 				'width' : '50px',
-				'cellStyles' : 'text-align:right'
+				'cellStyles' : 'text-align:right',
+				'formatter' : function(data){
+					if(self.power && self.power<5){
+						return "--";
+					}
+			        return data;
+			    }
 			}, {
 				'name' : '进价',
 				'field' : 'price',
 				'width' : '50px',
-				'cellStyles' : 'text-align:right'
+				'cellStyles' : 'text-align:right',
+				'formatter' : function(data){
+					if(self.power && self.power<5){
+						return "--";
+					}
+			        return data;
+			    }
 			}, {
 				'name' : '购买日期',
 				'field' : 'buydate',
@@ -207,6 +221,7 @@ function(
 				if (data.code != 200) {
 					return;
 				}
+				self.power = data.power;
 				var store = new ItemFileWriteStore({
 					data : {
 						identifier : 'id',

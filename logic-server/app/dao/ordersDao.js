@@ -90,11 +90,11 @@ ordersDao.queryOrders = function(param, cb){
 	});
 };
 
-ordersDao.createOrder = function(param, cb) {
+ordersDao.createOrder = function(param, rid, cb) {
 	var orderId;
 	async.waterfall([ function(cb) {
-		var sql = 'insert into orders (wedding_date,wedding_date_end,custom_name,tel,come_from,friend,price,discount,final_price,remark,ctime,order_no,guarantee,restmoney,security) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
-		var args = [param.wedding_date,param.wedding_date_end,param.custom_name,param.tel,param.come_from,param.friend,param.price,param.discount,param.final_price,param.remark,param.ctime,param.order_no,param.guarantee,param.restmoney,param.security];
+		var sql = 'insert into orders (wedding_date,wedding_date_end,custom_name,tel,come_from,friend,price,discount,final_price,remark,ctime,order_no,guarantee,restmoney,security,user) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+		var args = [param.wedding_date,param.wedding_date_end,param.custom_name,param.tel,param.come_from,param.friend,param.price,param.discount,param.final_price,param.remark,param.ctime,param.order_no,param.guarantee,param.restmoney,param.security, rid];
 
 		pomelo.app.get('dbclient').insert(sql, args, function(err, res) {
 			if (err !== null) {

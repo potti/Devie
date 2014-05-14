@@ -13,8 +13,7 @@ module.exports = function(app) {
 
 
 Handler.prototype.create = function(msg, session, next) {
-	
-	ordersDao.createOrder(msg, function(err, orderId){
+	ordersDao.createOrder(msg, session.get('rid'), function(err, orderId){
 		if(err) {
 			next(err, {code: 500});
 			return;
@@ -43,7 +42,12 @@ Handler.prototype.update = function(msg, session, next) {
 };
 
 Handler.prototype.del = function(msg, session, next) {
-	
+	if(session.get('power') < 5){
+		next(null, {
+			code : 500
+		});
+		return;
+	}
 	ordersDao.del(msg, function(err, success){
 		if(err || !success) {
 			next(err, {code: 500});
